@@ -1,5 +1,5 @@
 require 'rspec'
-require 'update_quality'
+require 'award'
 
 describe '#update_quality' do
 
@@ -10,11 +10,13 @@ describe '#update_quality' do
 
     context 'when quality is updated' do
       before do
-        update_quality([award])
+        # update_quality([award])
+        award.update_quality
       end
 
       context 'given a normal award' do
         let(:name) { 'NORMAL ITEM' }
+        let(:award) { Award.new(name, initial_expires_in, initial_quality) }
 
         before do
           # Verify that this is always true in the current context
