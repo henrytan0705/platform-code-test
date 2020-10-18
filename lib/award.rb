@@ -88,3 +88,11 @@ class BlueCompare < Award
         update_expiration()
     end
 end
+
+class BlueStar < Award
+    def update_quality
+        @quality -= expired?() || day_of_expiration?() ? 4 : 2
+        @quality = 0 if quality_below_zero?()
+        update_expiration()
+    end
+end

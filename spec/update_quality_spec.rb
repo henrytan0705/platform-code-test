@@ -190,6 +190,8 @@ describe '#update_quality' do
       context 'given a Blue Star award' do
         # before { pending }
         let(:name) { 'Blue Star' }
+        let(:award) { BlueStar.new(name, initial_expires_in, initial_quality) }
+
         before { award.expires_in.should == initial_expires_in-1 }
 
         context 'before the expiration date' do
