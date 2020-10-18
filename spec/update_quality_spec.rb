@@ -90,6 +90,7 @@ describe '#update_quality' do
       context 'given Blue Distinction Plus' do
         let(:initial_quality) { 80 }
         let(:name) { 'Blue Distinction Plus' }
+        let(:award) { BlueDistinctionPlus.new(name, initial_expires_in, initial_quality) }
 
         before do
           # Verify that this is always true in the current context

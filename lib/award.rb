@@ -58,3 +58,21 @@ class BlueFirst < Award
         update_expiration()
     end
 end
+
+class BlueDistinctionPlus < Award
+    INITIAL_VALUE = 80
+
+    def initialize(name, initial_expires_in, initial_quality)
+        super(name, initial_expires_in, INITIAL_VALUE)
+    end
+
+    # override method to set quality to initial qualtiy of 80 
+    def validate_quality(quality)
+        @quality = INITIAL_VALUE
+    end
+
+    # override method to do not update quality
+    def update_quality
+        return
+    end
+end
