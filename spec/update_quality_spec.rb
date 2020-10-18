@@ -231,13 +231,17 @@ describe '#update_quality' do
     let(:awards) {
       [
         Award.new('NORMAL ITEM', 5, 10),
-        Award.new('Blue First', 3, 10),
+        BlueFirst.new('Blue First', 3, 10),
       ]
     }
 
     context 'when quality is updated' do
       before do
-        update_quality(awards)
+        # update_quality(awards)
+
+        awards.each do |award|
+          award.update_quality
+        end
       end
 
       specify { expect(awards[0].quality).to eq(9) }
