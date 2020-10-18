@@ -44,3 +44,17 @@ class Award
         @quality >= MAX_QUALITY
     end
 end
+
+class BlueFirst < Award
+    def update_quality
+        # quality is under 50(MAX) 
+        unless maxed?()
+            # if expired +2 else +1
+            @quality += expired?() || day_of_expiration?() ? 2 : 1
+        end
+        
+        # set to 50(MAX) if quality >= 50
+        @quality = MAX_QUALITY if maxed?()
+        update_expiration()
+    end
+end

@@ -45,6 +45,7 @@ describe '#update_quality' do
 
       context 'given Blue First' do
         let(:name) { 'Blue First' }
+        let(:award) { BlueFirst.new(name, initial_expires_in, initial_quality) }
 
         before do
           # Verify that this is always true in the current context
