@@ -43,6 +43,11 @@ class Award
     def maxed?
         @quality >= MAX_QUALITY
     end
+
+    # Update all award instances using parent class
+    def self.update_all
+        ObjectSpace.each_object(self) {|award| award.update_quality}
+    end
 end
 
 class BlueFirst < Award
