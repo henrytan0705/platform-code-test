@@ -76,3 +76,15 @@ class BlueDistinctionPlus < Award
         return
     end
 end
+
+class BlueCompare < Award
+    def update_quality
+        @quality += 1 if @expires_in > 10
+        @quality += 2 if @expires_in.between?(6,10)
+        @quality += 3 if @expires_in.between?(0,5)
+
+        @quality = MAX_QUALITY if maxed?()
+        @quality = 0 if expired?()
+        update_expiration()
+    end
+end

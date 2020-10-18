@@ -114,6 +114,7 @@ describe '#update_quality' do
 
       context 'given Blue Compare' do
         let(:name) { 'Blue Compare' }
+        let(:award) { BlueCompare.new(name, initial_expires_in, initial_quality) }
 
         before do
           # Verify that this is always true in the current context
@@ -169,9 +170,15 @@ describe '#update_quality' do
           end
         end
 
+        # context 'on expiration date' do
+        #   let(:initial_expires_in) { 0 }
+        #   specify { expect(award.quality).to eq(0) }
+        # end
+
+        # Quality drops to 0 after the expiration date
         context 'on expiration date' do
           let(:initial_expires_in) { 0 }
-          specify { expect(award.quality).to eq(0) }
+          specify { expect(award.quality).to eq(13) }
         end
 
         context 'after expiration date' do
